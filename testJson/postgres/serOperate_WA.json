@@ -1,0 +1,22 @@
+{
+  "judgeInputs": [
+{
+  "JudgeDatabase": {
+    "host": "localhost",
+    "database": "postgres",
+    "image_id": "judgedb:2.0"
+  },
+  "beforeInput": null,
+  "userInput": "SELECT m.year_released AS year,\n m.title || ' (' || c.country_name || ') was released' AS event\n FROM movies m\n JOIN\n countries c ON c.country_code = m.country\nWHERE m.year_released BETWEEN 1930 AND 1935\nUNION ALL\nSELECT born,\n trim(coalesce(first_name, '') || ' ' || surname || ' was born') \n FROM people\nWHERE born BETWEEN 1930 AND 1935\nUNION ALL\nSELECT died,\n trim(coalesce(first_name, '') || ' ' || surname || ' died') \n FROM people\nWHERE died BETWEEN 1930 AND 1931\nORDER BY year;",
+  "standardAnswer": "SELECT m.year_released AS year,\n m.title || ' (' || c.country_name || ') was released' AS event\n FROM movies m\n JOIN\n countries c ON c.country_code = m.country\nWHERE m.year_released BETWEEN 1930 AND 1935\nUNION ALL\nSELECT born,\n trim(coalesce(first_name, '') || ' ' || surname || ' was born') \n FROM people\nWHERE born BETWEEN 1930 AND 1935\nUNION ALL\nSELECT died,\n trim(coalesce(first_name, '') || ' ' || surname || ' died') \n FROM people\nWHERE died BETWEEN 1930 AND 1935\nORDER BY year;",
+  "timeLimit": 10000,
+  "additionFields": {
+    "type": "select"
+  }
+}
+  ],
+  "codeId": 106,
+  "problemId": 1,
+  "userId": 1,
+  "dialect": "pgsql"
+}

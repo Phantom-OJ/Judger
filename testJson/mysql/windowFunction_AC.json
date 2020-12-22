@@ -1,0 +1,22 @@
+{
+  "judgeInputs": [
+{
+  "JudgeDatabase": {
+    "host": "localhost",
+    "database": "filmdb",
+    "image_id": "judge-mysql:1.0"
+  },
+  "beforeInput": null,
+  "userInput": "select country_name, title, year_released\nfrom (select c.country_name, m.title, m.year_released, \nmax(m.year_released) over (partition by c.country_name) as most_recent\n from movies m\n join countries c\n on c.country_code = m.country\n where c.continent = 'ASIA') x\nwhere most_recent = year_released\norder by country_name, title",
+  "standardAnswer": "select country_name, title, year_released\nfrom (select c.country_name, m.title, m.year_released, \nmax(m.year_released) over (partition by c.country_name) as most_recent\n from movies m\n join countries c\n on c.country_code = m.country\n where c.continent = 'ASIA') x\nwhere most_recent = year_released\norder by country_name, title",
+  "timeLimit": 10000,
+  "additionFields": {
+    "type": "select"
+  }
+}
+  ],
+  "codeId": 106,
+  "problemId": 1,
+  "userId": 1,
+  "dialect": "mysql"
+}

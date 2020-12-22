@@ -1,0 +1,13 @@
+joinInput:
+Exercise5
+8. Longest film directed by a woman?
+---------------------------------------------
+setOperator:
+Tutorial6
+7. List all year and "Events" (films released time, people births time, people deaths
+time) that occurred between 1930 and 1935
+---------------------------------------------
+window function
+Tutorial8
+1. What is the most recent film (title and year) for every Asian country, ordered by
+country.

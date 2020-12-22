@@ -1,0 +1,21 @@
+{
+  "judgeInputs": [
+    {
+  "JudgeDatabase": {
+    "host": "localhost",
+    "database": "filmdb",
+    "image_id": "judge-mysql:1.0"
+  },
+      "userInput": "SELECT title, country, year_released FROM movies WHERE country <>'us' AND year_released = 1991 AND title LIKE 'The%'",
+      "standardAnswer": "SELECT title, country, year_released FROM movies WHERE country <>'us' AND year_released = 1991 AND title LIKE 'The%'",
+      "timeLimit": 10000,
+      "additionFields": {
+        "type": "select"
+      }
+    }
+  ],
+  "codeId": 106,
+  "problemId": 1,
+  "userId": 1,
+  "dialect": "mysql"
+}

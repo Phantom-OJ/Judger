@@ -1,0 +1,22 @@
+{
+  "judgeInputs": [
+{
+  "JudgeDatabase": {
+    "host": "localhost",
+    "database": "postgres",
+    "image_id": "judgedb:2.0"
+  },
+  "beforeInput": null,
+  "userInput": "select distinct\n m.title,\n m.country,\n m.year_released,\n m.runtime\nfrom movies m\n join credits c\n on c.movieid = m.movieid\n join people p\n on p.peopleid = c.peopleid\nwhere p.gender = 'F'\n and c.credited_as = 'D'\n and m.runtime =\n (select max(m.runtime) -- NULLs will be ignored\n from movies m\n join credits c\n on c.movieid = m.movieid\n join people p\n on p.peopleid = c.peopleid\n where p.gender = 'F'\n and c.credited_as = 'D')",
+  "standardAnswer": "select distinct\n m.title,\n m.country,\n m.year_released,\n m.runtime\nfrom movies m\n join credits c\n on c.movieid = m.movieid\n join people p\n on p.peopleid = c.peopleid\nwhere p.gender = 'F'\n and c.credited_as = 'D'\n and m.runtime =\n (select max(m.runtime) -- NULLs will be ignored\n from movies m\n join credits c\n on c.movieid = m.movieid\n join people p\n on p.peopleid = c.peopleid\n where p.gender = 'F'\n and c.credited_as = 'D')",
+  "timeLimit": 10000,
+  "additionFields": {
+    "type": "select"
+  }
+}
+  ],
+  "codeId": 106,
+  "problemId": 1,
+  "userId": 1,
+  "dialect": "pgsql"
+}
